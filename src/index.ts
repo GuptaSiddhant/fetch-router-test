@@ -12,7 +12,7 @@ const routes = createRoutes({
   items: createResources("/items"),
 });
 
-const handlers = {
+const handlers: RouteHandlers<typeof routes> = {
   index() {
     return Response.json({});
   },
@@ -25,14 +25,14 @@ const handlers = {
     update: ({ params }) => Response.json({ id: params.id }),
     destroy: ({ params }) => Response.json({ id: params.id }),
   },
-} satisfies RouteHandlers<typeof routes>;
+};
 
 const router = createRouter();
 router.map(routes, handlers);
 
 test("response should match id-param", async () => {
-  const id = "11400";
-  const response = await router.fetch("http://localhost:3000/items/" + id);
+  const id = Math.floor(Math.random() * 1000).toString();
+  const response = await router.fetch(`http://localhost:3000/items/${id}`);
   const data = await response.json();
   equal(data["id"], id);
 });

@@ -2,7 +2,7 @@
   "name": "fetch-router-test",
   "type": "module",
   "dependencies": {
-    "@remix-run/fetch-router": "^0.6.0"
+    "@remix-run/fetch-router": "^0.8.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
